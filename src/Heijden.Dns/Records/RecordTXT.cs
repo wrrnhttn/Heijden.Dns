@@ -26,7 +26,8 @@ namespace Heijden.DNS
 
 		public RecordTXT(RecordReader rr)
 		{
-			TXT = rr.ReadString();
+			// TXT = rr.ReadString();
+			TXT = rr.ReadCharacterStrings();
 		}
 
 		public override string ToString()

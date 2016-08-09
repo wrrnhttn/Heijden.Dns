@@ -104,6 +104,22 @@ namespace Heijden.DNS
 			return name.ToString();
 		}
 
+		public string ReadCharacterStrings()
+		{
+			int rdataLength = m_Data.Length;
+			StringBuilder name = new StringBuilder();
+
+			for (int i = 0; i < rdataLength; i++)
+			{
+				short length = this.ReadByte();
+				for (int j = 0; j < length; j++)
+				{
+					name.Append(ReadChar());
+				}
+			}
+			return name.ToString();
+		}
+
 		public byte[] ReadBytes(int intLength)
 		{
 			List<byte> list = new List<byte>();
