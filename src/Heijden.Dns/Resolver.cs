@@ -342,7 +342,9 @@ namespace Heijden.DNS
 		private Response UdpRequest(Request request)
 		{
 			// RFC1035 max. size of a UDP datagram is 512 bytes
-			byte[] responseMessage = new byte[512];
+			//byte[] responseMessage = new byte[512];
+
+			byte[] responseMessage = new byte[4096];
 
 			for (int intAttempts = 0; intAttempts < m_Retries; intAttempts++)
 			{
