@@ -104,20 +104,24 @@ namespace Heijden.DNS
 			return name.ToString();
 		}
 
-		public string ReadCharacterStrings()
+		public List<string> ReadCharacterStrings()
 		{
 			int rdataLength = m_Data.Length;
-			StringBuilder name = new StringBuilder();
+			List<string> charStrings = new List<string>();
 
 			for (int i = 0; i < rdataLength; i++)
 			{
+				StringBuilder name = new StringBuilder();
+
 				short length = this.ReadByte();
 				for (int j = 0; j < length; j++)
 				{
 					name.Append(ReadChar());
 				}
+
+				charStrings.Add(name.ToString());
 			}
-			return name.ToString();
+			return charStrings;
 		}
 
 		public byte[] ReadBytes(int intLength)

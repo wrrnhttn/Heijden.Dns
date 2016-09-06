@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 #region Rfc info
 /*
@@ -22,7 +23,7 @@ namespace Heijden.DNS
 {
 	public class RecordTXT : Record
 	{
-		public string TXT;
+		public List<string> TXT;
 
 		public RecordTXT(RecordReader rr)
 		{
@@ -32,7 +33,13 @@ namespace Heijden.DNS
 
 		public override string ToString()
 		{
-			return string.Format("\"{0}\"",TXT);
+			//return string.Format("\"{0}\"",TXT);
+			return string.Join("", TXT.ToArray());
+		}
+
+		public List<string> GetTXT()
+		{
+			return this.TXT;
 		}
 
 	}
